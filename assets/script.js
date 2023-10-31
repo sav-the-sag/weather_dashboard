@@ -83,3 +83,5 @@ var displayWeather = function(weather, searchCity){
    weatherContainerEl.appendChild(windSpeedEl);
 }
 //console.log(weather);
+
+cityFormEl.addEventListener("submit", formSumbitHandler);
