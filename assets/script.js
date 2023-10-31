@@ -47,6 +47,10 @@ var displayWeather = function(weather, searchCity){
     //clear old content
     weatherContainerEl.textContent= "";  
     citySearchInputEl.textContent=searchCity;
-    
+
+    //create date element
+   var currentDate = document.createElement("span")
+   currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
+   citySearchInputEl.appendChild(currentDate);
 }
 //console.log(weather);
