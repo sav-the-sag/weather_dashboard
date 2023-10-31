@@ -83,5 +83,17 @@ var displayWeather = function(weather, searchCity){
    weatherContainerEl.appendChild(windSpeedEl);
 }
 //console.log(weather);
+var get5Day = function(city){
+    var apiKey = "844421298d794574c100e3409cee0499"
+    var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
+
+    fetch(apiURL)
+    .then(function(response){
+        response.json().then(function(data){
+           display5Day(data);
+        });
+    });
+};
+
 
 cityFormEl.addEventListener("submit", formSumbitHandler);
