@@ -26,3 +26,7 @@ var formSumbitHandler = function(event){
     saveSearch();
     pastSearch(city);
 }
+//save user's search using localStorage
+var saveSearch = function(){
+    localStorage.setItem("cities", JSON.stringify(cities));
+};
