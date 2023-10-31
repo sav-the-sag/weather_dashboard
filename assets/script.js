@@ -61,6 +61,25 @@ var displayWeather = function(weather, searchCity){
    //create a span element to hold temperature data
    var temperatureEl = document.createElement("span");
    temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
-   temperatureEl.classList = "list-group-item"
+   temperatureEl.classList = "list-group-item";
+
+   //create a span element to hold humidity data
+   var humidityEl = document.createElement("span");
+   humidityEl.textContent = "Humidity: " + weather.main.humidity + " %";
+   humidityEl.classList = "list-group-item"
+
+   //create a span element to hold wind data
+   var windSpeedEl = document.createElement("span");
+   windSpeedEl.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
+   windSpeedEl.classList = "list-group-item"
+
+   //append to container
+   weatherContainerEl.appendChild(temperatureEl);
+
+   //append to container
+   weatherContainerEl.appendChild(humidityEl);
+
+   //append to container
+   weatherContainerEl.appendChild(windSpeedEl);
 }
 //console.log(weather);
