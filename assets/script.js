@@ -32,7 +32,7 @@ var saveSearch = function () {
 };
 
 var getCityWeather = function (city) {
-    var apiKey = "844421298d794574c100e3409cee0499"
+    var apiKey = "14012d2b132d0f74456de17b02764fc1"
     var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
 
     fetch(apiURL)
@@ -85,7 +85,7 @@ var displayWeather = function (weather, searchCity) {
 }
 //console.log(weather);
 var get5Day = function (city) {
-    var apiKey = "844421298d794574c100e3409cee0499"
+    var apiKey = "14012d2b132d0f74456de17b02764fc1"
     var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
 
     fetch(apiURL)
@@ -122,6 +122,25 @@ var display5Day = function (weather) {
 
         //append to forecast card
         forecastEl.appendChild(weatherIcon);
+
+        //create temperature span
+       var forecastTempEl=document.createElement("span");
+       forecastTempEl.classList = "card-body text-center";
+       forecastTempEl.textContent = dailyForecast.main.temp + " °F";
+
+        //append to forecast card
+        forecastEl.appendChild(forecastTempEl);
+
+       var forecastHumEl=document.createElement("span");
+       forecastHumEl.classList = "card-body text-center";
+       forecastHumEl.textContent = dailyForecast.main.humidity + "  %";
+
+       //append to forecast card
+       forecastEl.appendChild(forecastHumEl);
+
+        // console.log(forecastEl);
+       //append to five day container
+        forecastContainerEl.appendChild(forecastEl);
     }
 }
 
@@ -137,4 +156,14 @@ var pastSearch = function (pastSearch) {
 
     pastSearchButtonEl.prepend(pastSearchEl);
 }
+
+var pastSearchHandler = function(event){
+    var city = event.target.getAttribute("data-city")
+    if(city){
+        getCityWeather(city);
+        get5Day(city);
+    }
+}
+
 cityFormEl.addEventListener("submit", formSumbitHandler);
+pastSearchButtonEl.addEventListener("click", pastSearchHandler);
