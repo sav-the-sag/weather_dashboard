@@ -57,5 +57,10 @@ var displayWeather = function(weather, searchCity){
    var weatherIcon = document.createElement("img")
    weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
    citySearchInputEl.appendChild(weatherIcon);
+
+   //create a span element to hold temperature data
+   var temperatureEl = document.createElement("span");
+   temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
+   temperatureEl.classList = "list-group-item"
 }
 //console.log(weather);
